@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# COMMAND LINE PARSE
+dir="."
+i=false
+n=false
+
+opt=`getopt -o i:n -- "$@"`
+
+if [ $? != 0 ]; then 
+	echo "Bad argument(s)" >&2
+	exit 1
+fi
+
+echo $@
+shift 2
+echo $@
