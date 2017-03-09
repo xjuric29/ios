@@ -1,17 +1,39 @@
 #!/bin/bash
 
+POSIXLY_CORRECT=yes
+
+function help {
+	echo "Usage: ./dirgraph [-i FILE_ERE] [-n] [DIR]" >&2
+	return 1
+}
+
 # COMMAND LINE PARSE
 dir="."
 i=false
 n=false
 
-opt=`getopt -o i:n -- "$@"`
+setopt=":i:n"
+while getopts "$setopt" opt; do
+	
+	if [[ $OPTARG =~ ^-.* ]]; then		#Required argument testing (! -i -n)
+		help
+        	exit 1
+     	fi
 
-if [ $? != 0 ]; then 
-	echo "Bad argument(s)" >&2
+	case $opt in
+		i) i="$OPTARG";;
+		n) n=true;;
+		?) help; exit 1;;
+	esac
+done
+
+shift $(($OPTIND - 1))		#On $1 shift dir path
+
+if [ -n "$1" -a -e "$1" -a $# -eq 1 ]; then
+	dir=$1
+elif [ $# -gt 1 -o -n "$1" -a ! -e "$1" ]; then
+	help
 	exit 1
 fi
+echo "$i $n $dir $#"
 
-echo $@
-shift 2
-echo $@
