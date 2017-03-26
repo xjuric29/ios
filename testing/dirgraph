@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 POSIXLY_CORRECT=yes
 
@@ -45,16 +45,16 @@ if echo "$dir" | egrep "$pattern" > /dev/null 2>&1 && $i; then		# If "$pattern" 
 fi
 
 # HEADER
-awk="{ \
-        flag = 0; \
-        for (i = 1; i <= NF; i++) { \
-                if ("\$i" ~ pattern) { \
-                        flag = 1 \ 
-                } \
-        } \
-        if (flag == 0) { \
-                print \$0 \
-        } \
+awk="{
+        flag = 0;
+        for (i = 1; i <= NF; i++) {
+                if ("\$i" ~ pattern) {
+                        flag = 1; 
+                }
+        }
+        if (flag == 0) {
+                print \$0;
+        }
 }"
 
 echo "Root directory: $dir"
