@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# COMMAND LINE PARSE
+dir="."
+i=""
+n=false
+
+setopt=":i:n"		# First colon activate silent mode 
+while getopts "$setopt" opt; do
+	
+	case $opt in
+		i) i="$OPTARG";;
+		n) n=true;;
+		?) echo "boboj"; exit 1;;
+	esac
+done
+
+shift $(($OPTIND - 1))		# On $1 shift dir path
+
+echo "$i $n $dir $#"
+
