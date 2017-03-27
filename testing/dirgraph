@@ -6,6 +6,7 @@ function error {
 	case $1 in
 		help) echo "Usage: ./dirgraph [-i PATTERN] [-n] [DIR]" >&2;;
 		pattern) echo "The pattern contains source dir path!" >&2;;
+		permission) echo "Some files don't have permission" >&2;;
 	esac
 
 }
@@ -56,10 +57,20 @@ awk="{
                 print \$0;
         }
 }"
+tmpFindDir=`find $dir -type d 2>/dev/null`
+permError=$?
+echo $permError
+tmpFindFile=`find $dir -type f 2>/dev/null`
+permError=$(($permError + $?))
+echo $permError
+
+if [ $permError -gt 0 ]; then		# If find discover non readable files
+	error "permission"
+	exit 1
 
 echo "Root directory: $dir"
-$i && echo "Directories: `find $dir -type d 2>/dev/null | awk -F/ -v pattern=$pattern "$awk"| wc -l`" || echo "Directories: `find $dir -type d 2>/dev/null | wc -l`"
-$i && echo "All files: `find $dir -type f 2>/dev/null | awk -F/ -v pattern=$pattern "$awk"| wc -l`" || echo "All files: `find $dir -type f 2>/dev/null | wc -l`"
+$i && echo "Directories: `echo $tmpFindDir | awk -F/ -v pattern=$pattern "$awk"| wc -l`" || echo "Directories: `echo $tmpFindDir | wc -l`"
+$i && echo "All files: `echo $tmpFindFile | awk -F/ -v pattern=$pattern "$awk"| wc -l`" || echo "All files: `echo $tmpFindFile | wc -l`"
 echo "File size histogram:"
 
 
