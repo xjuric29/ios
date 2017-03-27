@@ -5,8 +5,8 @@ POSIXLY_CORRECT=yes
 function error {
 	case $1 in
 		help) echo "Usage: ./dirgraph [-i PATTERN] [-n] [DIR]" >&2;;
-		pattern) echo "The pattern contains source dir path!" >&2;;
-		permission) echo "Some files don't have permission" >&2;;
+		pattern) echo "Pattern contains source dir path!" >&2;;
+		permission) echo "Some files don't have the permission. Are you root?" >&2;;
 	esac
 
 }
@@ -59,21 +59,39 @@ awk="{
 }"
 tmpFindDir=`find $dir -type d 2>/dev/null`
 permError=$?
-echo $permError
 tmpFindFile=`find $dir -type f 2>/dev/null`
 permError=$(($permError + $?))
-echo $permError
 
 if [ $permError -gt 0 ]; then		# If find discover non readable files
 	error "permission"
 	exit 1
+fi
 
 echo "Root directory: $dir"
-$i && echo "Directories: `echo $tmpFindDir | awk -F/ -v pattern=$pattern "$awk"| wc -l`" || echo "Directories: `echo $tmpFindDir | wc -l`"
-$i && echo "All files: `echo $tmpFindFile | awk -F/ -v pattern=$pattern "$awk"| wc -l`" || echo "All files: `echo $tmpFindFile | wc -l`"
+$i && echo "Directories: `echo "$tmpFindDir" | awk -F/ -v pattern=$pattern "$awk"| wc -l`" || echo "Directories: `echo "$tmpFindDir" | wc -l`"
+$i && echo "All files: `echo "$tmpFindFile" | awk -F/ -v pattern=$pattern "$awk"| wc -l`" || echo "All files: `echo "$tmpFindFile" | wc -l`"
+
+# HISTOGRAMS
+width=79
+
+if [ -t 1 ] ; then		#If script running in terminal 
+	width=$((`tput cols` - 1)) 
+fi
+
+histOneWidth=$((width-12))
+histTwoWidth=""
+
+#function printHist {		#$1 is number of files, 2# is optional width of row
+#	if [ -z $2 ]; then
+#
+#	else
+#
+#	fi
+#	
+#}
+
 echo "File size histogram:"
-
-
+printf "  <100 B  : "
 echo "$i $n $dir $#"
-echo "$PWD"
+echo "$width"
 
