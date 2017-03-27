@@ -81,7 +81,7 @@ if [ -t 1 ]; then		# If script running in terminal
 fi
 
 histOneWidth=$((width-12))
-histTwoWidth=""
+histTwoWidth=$((width-47))
 
 function printHist {		# $1 is bool n, $2 is width of term, $3 is gratest size, $4 is number of files
 	if [ $4 -eq 0 ]; then
@@ -113,10 +113,10 @@ if [ ${FSHIST[8]} -gt $gratest ]; then
 	gratest=${FSHIST[8]}
 fi
 
-for I in {0..8}; do
-	echo ${FSHIST[$I]}
-done
-echo "gratest $gratest"
+#########for I in {0..8}; do
+#########	echo ${FSHIST[$I]}
+#########done
+#########echo "gratest $gratest"
 	
 echo "File size histogram:"
 printf "  <100 B  : "
@@ -138,6 +138,41 @@ printHist $n $histOneWidth $gratest ${FSHIST[7]}
 printf "  >=1 GiB : "
 printHist $n $histOneWidth $gratest ${FSHIST[8]}
 
-echo "$i $n $dir $#"
-echo "$histOneWidth"
+###########echo "$i $n $dir $#"
+###########echo "$histOneWidth"
 
+awkShorter="{
+	len = length (\$0);
+        if (len > 40) {
+		str = substr (\$0, 1, 40);
+		printf str\"...:\n\";
+	}
+	else {
+		printf \$0;
+		for (i = len; i < 40; i++) {
+			printf \" \";
+		}
+		printf \"   :\n\";
+	}
+}"
+FTHISTout=`printf "$tmpFindFile" | awk '{print $NF}' | xargs file -b 2>/dev/null | awk "$awkShorter" | sort 2>/dev/null | uniq -c 2>/dev/null | sort -rn 2>/dev/null | head -10 2>/dev/null`
+FTHISTcount=`echo "$FTHISTout" | wc -l`
+J=0
+for I in `echo "$FTHISTout" | awk '{print $1}'`; do
+	FTHISTlenght[$J]=$I
+	J=$(($J + 1))
+done
+J=0
+IFS=$'\n'
+for I in `echo "$FTHISTout" | awk -F"\n" '{print substr ($0, 9)}'`; do
+        FTHISTfile[$J]="$I"
+        J=$(($J + 1))
+done
+echo "File type histogram:"
+if [ -n "$FTHISTout" ]; then	
+	for I in seq 0 $(($FTHISTcount - 1)); do
+		printf "  ${FTHISTfile[$I]} "
+		printHist $n $histOneWidth $gratest ${FSHIST[$I]}
+	done
+fi
+#echo "$FTHISTout"
