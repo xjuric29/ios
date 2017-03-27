@@ -57,41 +57,87 @@ awk="{
                 print \$0;
         }
 }"
-tmpFindDir=`find $dir -type d 2>/dev/null`
-permError=$?
-tmpFindFile=`find $dir -type f 2>/dev/null`
-permError=$(($permError + $?))
+tmpFindFile=`find $dir -type f -ls 2>/dev/null`
 
-if [ $permError -gt 0 ]; then		# If find discover non readable files
+if [ $? == 1 ]; then		# If find discover non readable files
 	error "permission"
 	exit 1
 fi
+if [ -n "$tmpFindFile" ]; then	# 0 files fix
+	tmpFindFile="$tmpFindFile\n"
+fi
 
 echo "Root directory: $dir"
-$i && echo "Directories: `echo "$tmpFindDir" | awk -F/ -v pattern=$pattern "$awk"| wc -l`" || echo "Directories: `echo "$tmpFindDir" | wc -l`"
-$i && echo "All files: `echo "$tmpFindFile" | awk -F/ -v pattern=$pattern "$awk"| wc -l`" || echo "All files: `echo "$tmpFindFile" | wc -l`"
+$i && echo "Directories: `find $dir -type d 2>/dev/null | awk -F/ -v pattern=$pattern "$awk"| wc -l`" || echo "Directories: `find $dir -type d 2>/dev/null | wc -l`"
+$i && echo "All files: `printf "$tmpFindFile" | awk '{print $NF}' | awk -F/ -v pattern=$pattern "$awk"| wc -l`" || echo "All files: `printf "$tmpFindFile" | wc -l`"
 
 # HISTOGRAMS
+awkPar="100 1024 10240 102400 1048576 10485760 104857600 1073741824"
+J=0
 width=79
 
-if [ -t 1 ] ; then		#If script running in terminal 
+if [ -t 1 ]; then		# If script running in terminal 
 	width=$((`tput cols` - 1)) 
 fi
 
 histOneWidth=$((width-12))
 histTwoWidth=""
 
-#function printHist {		#$1 is number of files, 2# is optional width of row
-#	if [ -z $2 ]; then
-#
-#	else
-#
-#	fi
-#	
-#}
+function printHist {		# $1 is bool n, $2 is width of term, $3 is gratest size, $4 is number of files
+	if [ $4 -eq 0 ]; then
+		echo
+		return
+	elif $1; then
+		constant=$(($2 * $4 / $3))
+		for K in `seq 1 $constant`; do
+			printf "#"
+		done
+	else
+                for K in `seq 1 $4`; do
+			printf "#"
+                done
+	fi
+	echo
+}
 
+for I in $awkPar; do		# Counting files sort by size in FSHIST array
+	$i && FSHIST[$J]=`printf "$tmpFindFile" | awk -v size=$I '{if ($7 < size) {print $NF;}}' | awk -F/ -v pattern=$pattern "$awk" | wc -l` || FSHIST[$J]=`printf "$tmpFindFile" | awk -v size=$I '{if ($7 < size) {print $0;}}' | wc -l`
+	J=$(($J + 1))
+	if [ $I = 1073741824 ]; then
+		$i && FSHIST[$J]=`printf "$tmpFindFile" | awk -v size=$I '{if ($7 >= size) {print $NF;}}' | awk -F/ -v pattern=$pattern "$awk" | wc -l` || FSHIST[$J]=`printf "$tmpFindFile" | awk -v size=$I '{if ($7 >= size) {print $0;}}' | wc -l`
+	fi
+done
+
+gratest=${FSHIST[7]}
+if [ ${FSHIST[8]} -gt $gratest ]; then
+	gratest=${FSHIST[8]}
+fi
+
+for I in {0..8}; do
+	echo ${FSHIST[$I]}
+done
+echo "gratest $gratest"
+	
 echo "File size histogram:"
 printf "  <100 B  : "
+printHist $n $histOneWidth $gratest ${FSHIST[1]}
+printf "  <1 KiB  : "
+printHist $n $histOneWidth $gratest ${FSHIST[1]}
+printf "  <10 KiB : "
+printHist $n $histOneWidth $gratest ${FSHIST[2]}
+printf "  <100 KiB: "
+printHist $n $histOneWidth $gratest ${FSHIST[3]}
+printf "  <1 MiB  : "
+printHist $n $histOneWidth $gratest ${FSHIST[4]}
+printf "  <10 MiB : "
+printHist $n $histOneWidth $gratest ${FSHIST[5]}
+printf "  <100 MiB: "
+printHist $n $histOneWidth $gratest ${FSHIST[6]}
+printf "  <1 GiB  : "
+printHist $n $histOneWidth $gratest ${FSHIST[7]}
+printf "  >=1 GiB : "
+printHist $n $histOneWidth $gratest ${FSHIST[8]}
+
 echo "$i $n $dir $#"
-echo "$width"
+echo "$histOneWidth"
 
