@@ -1,0 +1,10 @@
+0:c_typehist1: soubory s jednim typem
+# ./dirgraph dir <stdin >>stdout 2>>stderr; echo $? >>errcode
+# diff -u stdout.ref stdout
+#   --- stdout.ref
+#   +++ stdout
+#   @@ -1,2 +1,4 @@
+#    File type histogram:
+#      ASCII text                                 : ####
+#   +  ASCII text                                 : ####
+#   +  ASCII text                                 : ####

@@ -1,0 +1,28 @@
+0:e_hidden1: skryte soubory
+# ./dirgraph dir <stdin >>stdout 2>>stderr; echo $? >>errcode
+# diff -u stdout.ref stdout
+#   --- stdout.ref
+#   +++ stdout
+#   @@ -3,13 +3,15 @@
+#    All files: 4
+#    File size histogram:
+#      <100 B  : ####
+#   -  <1 KiB  : 
+#   -  <10 KiB : 
+#   -  <100 KiB: 
+#   -  <1 MiB  : 
+#   -  <10 MiB : 
+#   -  <100 MiB: 
+#   -  <1 GiB  : 
+#   +  <1 KiB  : ####
+#   +  <10 KiB : ####
+#   +  <100 KiB: ####
+#   +  <1 MiB  : ####
+#   +  <10 MiB : ####
+#   +  <100 MiB: ####
+#   +  <1 GiB  : ####
+#      >=1 GiB : 
+#    File type histogram:
+#      ASCII text                                 : ####
+#   +  ASCII text                                 : ####
+#   +  ASCII text                                 : ####
