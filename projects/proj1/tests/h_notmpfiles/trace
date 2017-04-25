@@ -1,0 +1,378 @@
+23906 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23906 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23906 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23906 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23906 open("/lib/x86_64-linux-gnu/libtinfo.so.5", O_RDONLY|O_CLOEXEC) = 3
+23906 open("/lib/x86_64-linux-gnu/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+23906 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23906 open("/dev/tty", O_RDWR|O_NONBLOCK) = 3
+23906 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23906 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23906 open("../dirgraph", O_RDONLY)     = 3
+23907 +++ exited with 0 +++
+23908 open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+23908 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23908 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23908 open("/bin/egrep", O_RDONLY)      = 3
+23908 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23908 open("/lib/x86_64-linux-gnu/libpcre.so.3", O_RDONLY|O_CLOEXEC) = 3
+23908 open("/lib/x86_64-linux-gnu/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+23908 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23908 open("/lib/x86_64-linux-gnu/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3
+23908 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23908 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23908 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+23908 open("/usr/share/locale/cs/LC_MESSAGES/grep.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+23908 open("/usr/share/locale-langpack/cs/LC_MESSAGES/grep.mo", O_RDONLY) = 3
+23908 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23907, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23910 open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+23910 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23910 open("/lib/x86_64-linux-gnu/libselinux.so.1", O_RDONLY|O_CLOEXEC) = 3
+23910 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+23910 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23910 open("/lib/x86_64-linux-gnu/libpcre.so.3", O_RDONLY|O_CLOEXEC) = 3
+23910 open("/lib/x86_64-linux-gnu/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+23910 open("/lib/x86_64-linux-gnu/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3
+23910 open("/proc/filesystems", O_RDONLY) = 3
+23910 open(".", O_RDONLY)               = 3
+23910 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 4
+23910 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 4
+23910 open("/usr/share/locale/cs/LC_MESSAGES/findutils.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+23910 open("/usr/share/locale-langpack/cs/LC_MESSAGES/findutils.mo", O_RDONLY) = 4
+23910 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 4
+23910 open("/etc/nsswitch.conf", O_RDONLY|O_CLOEXEC) = 6
+23910 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 6
+23910 open("/lib/x86_64-linux-gnu/libnss_compat.so.2", O_RDONLY|O_CLOEXEC) = 6
+23910 open("/lib/x86_64-linux-gnu/libnsl.so.1", O_RDONLY|O_CLOEXEC) = 6
+23910 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 6
+23910 open("/lib/x86_64-linux-gnu/libnss_nis.so.2", O_RDONLY|O_CLOEXEC) = 6
+23910 open("/lib/x86_64-linux-gnu/libnss_files.so.2", O_RDONLY|O_CLOEXEC) = 6
+23910 open("/etc/passwd", O_RDONLY|O_CLOEXEC) = 6
+23910 open("/etc/group", O_RDONLY|O_CLOEXEC) = 6
+23910 open("/etc/localtime", O_RDONLY|O_CLOEXEC) = 6
+23910 +++ exited with 0 +++
+23909 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23910, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23909 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23909, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23912 open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+23913 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23912 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23913 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23912 open("/lib/x86_64-linux-gnu/libselinux.so.1", O_RDONLY|O_CLOEXEC) = 3
+23912 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+23912 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23913 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23912 open("/lib/x86_64-linux-gnu/libpcre.so.3", O_RDONLY|O_CLOEXEC <unfinished ...>
+23913 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC <unfinished ...>
+23912 <... open resumed> )              = 3
+23913 <... open resumed> )              = 3
+23913 open("/usr/share/locale/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+23913 open("/usr/share/locale-langpack/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = 3
+23912 open("/lib/x86_64-linux-gnu/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+23913 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23912 open("/lib/x86_64-linux-gnu/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3
+23912 open("/proc/filesystems", O_RDONLY) = 3
+23912 open(".", O_RDONLY)               = 3
+23912 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 4
+23912 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 4
+23912 open("/usr/share/locale/cs/LC_MESSAGES/findutils.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+23912 open("/usr/share/locale-langpack/cs/LC_MESSAGES/findutils.mo", O_RDONLY) = 4
+23912 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 4
+23912 +++ exited with 0 +++
+23913 +++ exited with 0 +++
+23911 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23912, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23911 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23911, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23915 +++ exited with 0 +++
+23916 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23916 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23916 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23916 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+23916 open("/usr/share/locale/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+23916 open("/usr/share/locale-langpack/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = 3
+23916 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23916 +++ exited with 0 +++
+23914 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23915, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23914 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23914, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23917 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23917 open("/lib/x86_64-linux-gnu/libtinfo.so.5", O_RDONLY|O_CLOEXEC) = 3
+23917 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23917 open("/lib/terminfo/s/screen", O_RDONLY) = 3
+23917 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23917, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23919 +++ exited with 0 +++
+23921 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23920 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23921 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23920 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+23920 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23921 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23921 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+23921 open("/usr/share/locale/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+23921 open("/usr/share/locale-langpack/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = 3
+23921 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23920 +++ exited with 0 +++
+23921 +++ exited with 0 +++
+23918 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23919, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23918 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23918, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23923 +++ exited with 0 +++
+23924 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23924 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+23925 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23925 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23924 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23925 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23925 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+23925 open("/usr/share/locale/cs/LC_MESSAGES/coreutils.mo", O_RDONLY <unfinished ...>
+23924 +++ exited with 0 +++
+23925 <... open resumed> )              = -1 ENOENT (No such file or directory)
+23925 open("/usr/share/locale-langpack/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = 3
+23925 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23925 +++ exited with 0 +++
+23922 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23923, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23922 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23922, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23927 +++ exited with 0 +++
+23928 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23928 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+23929 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23929 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC <unfinished ...>
+23928 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC <unfinished ...>
+23929 <... open resumed> )              = 3
+23928 <... open resumed> )              = 3
+23929 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23929 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+23929 open("/usr/share/locale/cs/LC_MESSAGES/coreutils.mo", O_RDONLY <unfinished ...>
+23928 +++ exited with 0 +++
+23929 <... open resumed> )              = -1 ENOENT (No such file or directory)
+23929 open("/usr/share/locale-langpack/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = 3
+23929 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23929 +++ exited with 0 +++
+23926 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23927, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23926 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23926, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23931 +++ exited with 0 +++
+23933 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23932 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23933 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23932 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+23932 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23933 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23933 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+23933 open("/usr/share/locale/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+23933 open("/usr/share/locale-langpack/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = 3
+23933 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23932 +++ exited with 0 +++
+23933 +++ exited with 0 +++
+23930 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23931, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23930 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23930, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23935 +++ exited with 0 +++
+23936 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23937 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23936 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+23937 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23936 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23937 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23937 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+23937 open("/usr/share/locale/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+23937 open("/usr/share/locale-langpack/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = 3
+23937 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23936 +++ exited with 0 +++
+23937 +++ exited with 0 +++
+23934 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23935, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23934 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23934, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23939 +++ exited with 0 +++
+23940 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23940 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+23941 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23940 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23941 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23941 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23941 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+23941 open("/usr/share/locale/cs/LC_MESSAGES/coreutils.mo", O_RDONLY <unfinished ...>
+23940 +++ exited with 0 +++
+23941 <... open resumed> )              = -1 ENOENT (No such file or directory)
+23941 open("/usr/share/locale-langpack/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = 3
+23941 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23941 +++ exited with 0 +++
+23938 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23939, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23938 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23938, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23943 +++ exited with 0 +++
+23944 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23945 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23944 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+23945 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23944 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23945 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23945 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+23945 open("/usr/share/locale/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+23945 open("/usr/share/locale-langpack/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = 3
+23945 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23944 +++ exited with 0 +++
+23945 +++ exited with 0 +++
+23942 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23943, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23942 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23942, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23947 +++ exited with 0 +++
+23948 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC <unfinished ...>
+23949 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC <unfinished ...>
+23948 <... open resumed> )              = 3
+23949 <... open resumed> )              = 3
+23949 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC <unfinished ...>
+23948 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC <unfinished ...>
+23949 <... open resumed> )              = 3
+23948 <... open resumed> )              = 3
+23948 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23949 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23949 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+23949 open("/usr/share/locale/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+23949 open("/usr/share/locale-langpack/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = 3
+23949 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23948 +++ exited with 0 +++
+23949 +++ exited with 0 +++
+23946 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23947, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23946 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23946, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23951 +++ exited with 0 +++
+23952 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23953 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23952 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC <unfinished ...>
+23953 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC <unfinished ...>
+23952 <... open resumed> )              = 3
+23953 <... open resumed> )              = 3
+23952 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23953 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23953 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+23953 open("/usr/share/locale/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+23953 open("/usr/share/locale-langpack/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = 3
+23953 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23952 +++ exited with 0 +++
+23953 +++ exited with 0 +++
+23950 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23951, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23950 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23950, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23954 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23954 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23954 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23954 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23954, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23956 +++ exited with 0 +++
+23957 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23957 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+23958 open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+23957 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23958 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23958 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23959 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23960 open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+23959 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC <unfinished ...>
+23961 open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666 <unfinished ...>
+23959 <... open resumed> )              = 3
+23961 <... open resumed> )              = 3
+23959 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23958 open("/proc/self/fd", O_RDONLY|O_NONBLOCK|O_DIRECTORY|O_CLOEXEC) = 3
+23957 +++ exited with 0 +++
+23958 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC <unfinished ...>
+23960 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23961 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23960 open("/lib/x86_64-linux-gnu/libpthread.so.0", O_RDONLY|O_CLOEXEC <unfinished ...>
+23961 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC <unfinished ...>
+23960 <... open resumed> )              = 3
+23961 <... open resumed> )              = 3
+23958 <... open resumed> )              = 3
+23960 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23962 open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+23962 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23962 open("/lib/x86_64-linux-gnu/libpthread.so.0", O_RDONLY|O_CLOEXEC <unfinished ...>
+23961 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC <unfinished ...>
+23960 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC <unfinished ...>
+23962 <... open resumed> )              = 3
+23961 <... open resumed> )              = 3
+23960 <... open resumed> )              = 3
+23964 open("/proc/self/fd", O_RDONLY|O_NONBLOCK|O_DIRECTORY|O_CLOEXEC) = 3
+23962 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23964 open("/dev/null", O_RDONLY)       = 0
+23963 open("/dev/null", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+23964 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23964 open("/usr/lib/x86_64-linux-gnu/libmagic.so.1", O_RDONLY|O_CLOEXEC) = 3
+23964 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23963 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC <unfinished ...>
+23964 open("/lib/x86_64-linux-gnu/libz.so.1", O_RDONLY|O_CLOEXEC <unfinished ...>
+23963 <... open resumed> )              = 3
+23964 <... open resumed> )              = 3
+23962 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23963 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23964 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23963 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23964 open("/etc/magic.mgc", O_RDONLY)  = -1 ENOENT (No such file or directory)
+23964 open("/etc/magic", O_RDONLY)      = 3
+23963 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+23964 open("/usr/share/misc/magic.mgc", O_RDONLY) = 3
+23964 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY <unfinished ...>
+23963 open("/usr/share/locale/cs/LC_MESSAGES/coreutils.mo", O_RDONLY <unfinished ...>
+23964 <... open resumed> )              = 3
+23963 <... open resumed> )              = -1 ENOENT (No such file or directory)
+23963 open("/usr/share/locale-langpack/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = 3
+23964 open("dir/file", O_RDONLY)        = 3
+23963 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23964 +++ exited with 0 +++
+23958 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23964, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23958 +++ exited with 0 +++
+23959 +++ exited with 0 +++
+23960 +++ exited with 0 +++
+23961 +++ exited with 0 +++
+23962 +++ exited with 0 +++
+23963 +++ exited with 0 +++
+23955 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23956, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23955 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23955, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23966 +++ exited with 0 +++
+23967 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23967 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23967 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23967 open("/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+23967 open("/usr/share/locale/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+23967 open("/usr/share/locale-langpack/cs/LC_MESSAGES/coreutils.mo", O_RDONLY) = 3
+23967 open("/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY) = 3
+23967 +++ exited with 0 +++
+23965 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23966, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23965 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23965, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23969 +++ exited with 0 +++
+23970 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23970 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+23970 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23970 +++ exited with 0 +++
+23968 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23969, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23968 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23968, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23972 +++ exited with 0 +++
+23973 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23973 open("/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+23973 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23973 +++ exited with 0 +++
+23971 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23972, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23971 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23971, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23974 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23974 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23974 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23974 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23974, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23975 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23975 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23975 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23975 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23975, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23976 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+23976 open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+23976 open("/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+23976 +++ exited with 0 +++
+23906 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23976, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+23906 +++ exited with 0 +++
