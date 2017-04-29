@@ -1,10 +1,11 @@
 #CFLAGS=-std=gnu99 -Wall -Wextra -Werror -pedantic
 CFLAGS=-std=gnu99 -Wall -Wextra
-#PARTS=main.o
-PARTS=main.c
 
-proj2: ${PARTS}
-	gcc ${CFLAGS} ${PARTS} -o proj2
+proj2: main.o proc.o
+	gcc main.o proc.o -o proj2 -lpthread
 
-#main.o: main.c
-#	gcc ${CFLAGS} main.c -o main.o
+proc.o: proc.c
+	gcc ${CFLAGS} proc.c -c -lpthread
+
+main.o: main.c proc.h
+	gcc ${CFLAGS} main.c proc.h -c -lpthread
