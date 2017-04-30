@@ -1,2 +1,8 @@
 1	: A 1	: started
-2	: C 1	: started
+2	: A 1	: enter
+3	: A 1	: trying to leave
+4	: A 1	: leave
+5	: C 1	: started
+6	: C 1	: enter
+7	: C 1	: trying to leave
+8	: C 1	: leave

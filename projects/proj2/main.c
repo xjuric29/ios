@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -48,10 +49,12 @@ int main (int argc, char **argv) {
 
 	int segmentID, *sharedMemory;
 
-	segmentID = shmget (IPC_PRIVATE, sizeof (int), IPC_CREAT | IPC_EXCL | S_IRUSR | S_IWUSR);
+	segmentID = shmget (IPC_PRIVATE, 6 * sizeof (int), IPC_CREAT | IPC_EXCL | S_IRUSR | S_IWUSR);	// Counter, children, adults, waiting, leaving
 	if (segmentID < 0) printError (2);
 	sharedMemory = shmat (segmentID, NULL, 0);
-	*sharedMemory = 1;	// Number of first line
+	sharedMemory[COUNT] = 1;
+	sharedMemory[ADULTS_REM] = mainProc.a;
+	memset (sharedMemory + 1, 0, 4);
 	shmdt (sharedMemory);
 
 	// File reset
@@ -62,7 +65,6 @@ int main (int argc, char **argv) {
 	
 	pid_t pidGenerateAdult, pidGenerateChild;
 	
-	printf ("%d\n", IPC_PRIVATE);
 	if ((pidGenerateAdult = fork ()) == 0) {	// Generate adults process
 		//sleep (10);
 		newProc (0, 1, 0, segmentID);
@@ -83,10 +85,13 @@ int main (int argc, char **argv) {
         }
 	
 	printf ("Som rodic, pid: %d\n", getpid ());
+	printf ("adult: %d\nchild: %d\n", pidGenerateAdult, pidGenerateChild);
 	
 
 	while (wait (NULL) != -1);
-	sem_unlink (W_SEMAPHORE);	// Cleaning own semaphore
+	sem_unlink (M_SEMAPHORE);	// Cleaning own semaphore
+	sem_unlink (A_SEMAPHORE);
+	sem_unlink (C_SEMAPHORE);
 	shmctl (segmentID, IPC_RMID, NULL);
 
 	exit (0);

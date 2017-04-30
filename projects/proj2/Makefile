@@ -1,5 +1,5 @@
-#CFLAGS=-std=gnu99 -Wall -Wextra -Werror -pedantic
-CFLAGS=-std=gnu99 -Wall -Wextra
+CFLAGS=-std=gnu99 -Wall -Wextra -Werror -pedantic
+#CFLAGS=-std=gnu99 -Wall -Wextra
 
 proj2: main.o proc.o
 	gcc main.o proc.o -o proj2 -lpthread
