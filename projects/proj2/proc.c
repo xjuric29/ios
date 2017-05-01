@@ -13,53 +13,62 @@
 
 typedef struct processControl processControl;
 
-void cacthSignalGenProc (int signal) {
-	
-	// Shared memory
-	
-	processControl *sharedMemory = NULL;
-	int segmentID = shmget (ftok (PATH, 1), sizeof (processControl), IPC_EXCL | S_IRUSR | S_IWUSR);
-	
-	sharedMemory = shmat (segmentID, NULL, 0); 
-	//if (sharedMemory == NULL);	// error
+// Globals
+processControl *sharedMemory = NULL;
+sem_t *semM, *semA, *semC, *semE;
+FILE *file = NULL;
 
+void cacthSignalChild (int signal) {
 	switch (signal) {
-		case SIGUSR1:
-			if (sharedMemory->adultsRem == 0 && sharedMemory->childrenRem == 0 ) {
-				sem_t *semE = sem_open (E_SEMAPHORE, O_CREAT, S_IWUSR | S_IRUSR, 0);
-				for (int i = 0; i < (sharedMemory->a + sharedMemory->c); i++) {
-					sem_post (semE);
-				}
-				sem_close (semE);
-			}
+                case SIGTERM:
+			sem_close (semM);
+                	sem_close (semA);
+                	sem_close (semC);
+                	sem_close (semE);
+                	shmdt (sharedMemory);
+			if (file != NULL) fclose(file);
+			exit (2);
+		case SIGINT:
 			break;
 	}
-	shmdt (sharedMemory);
-	return;
 }
 
 void newProc (const int type, const int order, int segmentID) {	// Type: 0 - adult, 1 -child
 	
+	// Set behavior for signals
+
+	pid_t ppid = getppid ();
+	signal(SIGTERM, cacthSignalChild);
+	signal(SIGINT, cacthSignalChild);
+
 	// Shared memory
 	
-	processControl *sharedMemory = NULL;
-
 	sharedMemory = shmat (segmentID, NULL, 0);
-	if (sharedMemory == NULL) exit (2);
+	if (sharedMemory == NULL) {
+		kill (ppid, SIGUSR2);
+		exit (2);
+	}
 
 	// Semaphore
 
-	sem_t *semM = sem_open (M_SEMAPHORE, O_CREAT, S_IWUSR | S_IRUSR, 1); 
-	sem_t *semA = sem_open (A_SEMAPHORE, O_CREAT, S_IWUSR | S_IRUSR, 0);
-	sem_t *semC = sem_open (C_SEMAPHORE, O_CREAT, S_IWUSR | S_IRUSR, 0);
-	sem_t *semE = sem_open (E_SEMAPHORE, O_CREAT, S_IWUSR | S_IRUSR, 0);
+	semM = sem_open (M_SEMAPHORE, O_CREAT, S_IWUSR | S_IRUSR, 1); 
+	semA = sem_open (A_SEMAPHORE, O_CREAT, S_IWUSR | S_IRUSR, 0);
+	semC = sem_open (C_SEMAPHORE, O_CREAT, S_IWUSR | S_IRUSR, 0);
+	semE = sem_open (E_SEMAPHORE, O_CREAT, S_IWUSR | S_IRUSR, 0);
 	
-	if (semM == SEM_FAILED || semA == SEM_FAILED || semC == SEM_FAILED || semC == SEM_FAILED) exit (2);
+	if (semM == SEM_FAILED || semA == SEM_FAILED || semC == SEM_FAILED || semC == SEM_FAILED) {
+		kill (ppid, SIGUSR2);
+		sem_close (semM);
+       		sem_close (semA);
+        	sem_close (semC);
+        	sem_close (semE);
+        	shmdt (sharedMemory);
+		exit (2);
+	}
 	
 	// Body of process
 	
 	char typeOfProc;
-	FILE *file = NULL;
 	int tmp;
 
 	(type == 0) ? (typeOfProc = 'A') : (typeOfProc = 'C');		// Set type in char of process
@@ -70,6 +79,7 @@ void newProc (const int type, const int order, int segmentID) {	// Type: 0 - adu
 	fprintf (file, "%d\t: %c %d\t: started\n", sharedMemory->count++, typeOfProc, order);
 	fflush (file);
 	fclose (file);
+	file = NULL;
 	sem_post (semM);
 
 	if (type == 0) {	// Adult block
@@ -86,6 +96,7 @@ void newProc (const int type, const int order, int segmentID) {	// Type: 0 - adu
 		fprintf (file, "%d\t: %c %d\t: enter\n", sharedMemory->count++, typeOfProc, order);
 		fflush (file);
         	fclose (file);
+		file = NULL;
 		sem_post (semM);
 		
 		if (sharedMemory->awt != 0) usleep (rand () % (sharedMemory->awt + 1));		
@@ -100,6 +111,7 @@ void newProc (const int type, const int order, int segmentID) {	// Type: 0 - adu
 			fprintf (file, "%d\t: %c %d\t: leave\n", sharedMemory->count++, typeOfProc, order);
 			fflush (file);
 			fclose (file);
+			file = NULL;
 			sem_post (semM);
 		}
 		else {
@@ -107,6 +119,7 @@ void newProc (const int type, const int order, int segmentID) {	// Type: 0 - adu
 			fprintf (file, "%d\t: %c %d\t: waiting : %d : %d\n", sharedMemory->count++, typeOfProc, order, sharedMemory->adults, sharedMemory->children);
                         fflush (file);
 			fclose (file);
+			file = NULL;
 			sem_post (semM);
 			sem_wait (semA);
 			sem_wait (semM);
@@ -115,6 +128,7 @@ void newProc (const int type, const int order, int segmentID) {	// Type: 0 - adu
 			fprintf (file, "%d\t: %c %d\t: leave\n", sharedMemory->count++, typeOfProc, order);
 			fflush (file);
 			fclose (file);
+			file = NULL;
 			sem_post (semM);
 		}
 
@@ -128,6 +142,7 @@ void newProc (const int type, const int order, int segmentID) {	// Type: 0 - adu
                 	fprintf (file, "%d\t: %c %d\t: enter\n", sharedMemory->count++, typeOfProc, order);
                 	fflush (file);
 			fclose (file);
+			file = NULL;
 			sem_post (semM);
                 }
                 else {
@@ -135,6 +150,7 @@ void newProc (const int type, const int order, int segmentID) {	// Type: 0 - adu
                         fprintf (file, "%d\t: %c %d\t: waiting : %d : %d\n", sharedMemory->count++, typeOfProc, order, sharedMemory->adults, sharedMemory->children);
 			fflush (file);
 			fclose (file);
+			file = NULL;
 			sem_post (semM);
                         sem_wait (semC);
                 	sem_wait (semM);
@@ -143,12 +159,13 @@ void newProc (const int type, const int order, int segmentID) {	// Type: 0 - adu
                         fprintf (file, "%d\t: %c %d\t: enter\n", sharedMemory->count++, typeOfProc, order);     
                         fflush (file);
 			fclose (file);
+			file = NULL;
 			sem_post (semM);
 		}
 		
 		if (sharedMemory->cwt != 0) usleep (rand () % (sharedMemory->cwt + 1));	
 			
-                sem_wait (semM);
+                sem_wait (semM);	
                 sharedMemory->children--;
 		sharedMemory->childrenRem--;
                 if (sharedMemory->leaving && (sharedMemory->children <= (3 * (sharedMemory->adults - 1)))) {
@@ -163,9 +180,10 @@ void newProc (const int type, const int order, int segmentID) {	// Type: 0 - adu
 		fprintf (file, "%d\t: %c %d\t: leave\n", sharedMemory->count++, typeOfProc, order);
 		fflush (file);
 		fclose (file);
+		file = NULL;
 		sem_post (semM);
 	}
-	kill (getppid (), SIGUSR1);
+	kill (ppid, SIGUSR1);
 	sem_wait (semE);	// Waiting while all child/adult process ends
 	sem_wait (semM);        // End
         file = fopen (FILE_NAME, "at");
@@ -173,6 +191,7 @@ void newProc (const int type, const int order, int segmentID) {	// Type: 0 - adu
         fprintf (file, "%d\t: %c %d\t: finished\n", sharedMemory->count++, typeOfProc, order);
         fflush (file);
         fclose (file);
+	file = NULL;
         sem_post (semM);
 
 

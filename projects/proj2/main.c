@@ -14,28 +14,27 @@
 
 typedef struct processControl processControl;
 
-void printError (int type) {
-	switch (type) {
-		case 1:
-			fprintf (stderr, "Usage:\n"
-				"./proj2 A C AGT CGT AWT CWT\n");
-			exit (type);
-		case 2:
-			fprintf (stderr, "System call error\n");
-			exit (type);
-	}
-}
+void printError (int type);
+void cacthSignalGenProc (int signal);
+void cacthSignalMainProc (int signal);
+
+// Globals
+
+int segmentID;
+processControl *sharedMemory;
 
 int main (int argc, char **argv) {
+
+	// Set behavior for signals
+        signal(SIGUSR2, cacthSignalMainProc);
+        signal(SIGTERM, cacthSignalMainProc);
+        signal(SIGINT, cacthSignalMainProc);
 	
 	// Shared memory
 
-	int segmentID;
-	processControl *sharedMemory;
-
 	segmentID = shmget (ftok (PATH, 1), sizeof (processControl), IPC_CREAT | S_IRUSR | S_IWUSR);	// See proc.h for more details about shared structure
 	
-	if (segmentID < 0) printError (2);
+	if (segmentID < 0) cacthSignalMainProc (SIGTERM);
 	sharedMemory = shmat (segmentID, NULL, 0);
 	memset (sharedMemory, 0, sizeof (processControl));
 	sharedMemory->count = 1;
@@ -62,18 +61,27 @@ int main (int argc, char **argv) {
 
 	// Creating processes
 	
-	pid_t pidGenerateAdult, pidGenerateChild, pidTmp, *pidChild = NULL, *pidAdult = NULL;
-	pidAdult = malloc (sharedMemory->a * sizeof (pid_t));
+	pid_t pidGenerateAdult, pidGenerateChild, pidTmp;
 	
 	if ((pidGenerateAdult = fork ()) == 0) {	// Generate adults process
-		signal(SIGUSR1, cacthSignalGenProc);
+		
+		// Set behavior for signals
+
+                signal(SIGUSR1, cacthSignalGenProc);
+                signal(SIGUSR2, cacthSignalGenProc);
+                signal(SIGTERM, cacthSignalGenProc);
+                signal(SIGINT, cacthSignalGenProc);
+
 		for (int i = 1; i <= sharedMemory->a; i++) {
 			pidTmp = fork ();
 			if (pidTmp == 0) {
 				newProc (0, i, segmentID);
 				break;
 			}
-			else if (pidTmp < 0);	//error
+			else if (pidTmp < 0) {
+				cacthSignalGenProc (SIGUSR2);   
+                                break;
+			}
 			else {
 				if (sharedMemory->agt != 0) usleep (rand () % (sharedMemory->agt + 1));
 			}
@@ -84,17 +92,27 @@ int main (int argc, char **argv) {
 	}
 	
 	// Back in parrent
-	else if (pidGenerateAdult < 0) printError (2);
+	else if (pidGenerateAdult < 0) cacthSignalMainProc (SIGTERM);
 	
 	if ((pidGenerateChild = fork ()) == 0) {        // Generate childs process
+		
+		// Set behavior for signals
+
 		signal(SIGUSR1, cacthSignalGenProc);
+		signal(SIGUSR2, cacthSignalGenProc);
+		signal(SIGTERM, cacthSignalGenProc);
+		signal(SIGINT, cacthSignalGenProc);
+
 		for (int i = 1; i <= sharedMemory->c; i++) {
                         pidTmp = fork ();
 			if (pidTmp == 0) {
 				newProc (1, i, segmentID);
 				break;
 			}
-                        else if (pidTmp < 0);   //error
+                        else if (pidTmp < 0) {
+				cacthSignalGenProc (SIGUSR2);
+				break;		
+			}
                         else {
                                 if (sharedMemory->cgt != 0) usleep (rand () % (sharedMemory->cgt + 1));
                         }
@@ -105,14 +123,11 @@ int main (int argc, char **argv) {
 	}
 
         // Back in parent
-        else if (pidGenerateAdult < 0) {        // fork se nezdari
-                wait (NULL);	
-		printError (2);
-        }
+        else if (pidGenerateAdult < 0) cacthSignalMainProc (SIGTERM);
 	
-	while (wait (NULL) != -1);
+	printf ("main pid: %d\n", getpid());
 
-	printf ("child zbyva %d\n", sharedMemory->childrenRem);
+	while (wait (NULL) != -1);
 
 	sem_unlink (M_SEMAPHORE);	// Cleaning own semaphore
 	sem_unlink (A_SEMAPHORE);
@@ -122,4 +137,65 @@ int main (int argc, char **argv) {
 	shmctl (segmentID, IPC_RMID, NULL);
 
 	exit (0);
+}
+
+void printError (int type) {
+        switch (type) {
+                case 1:
+                        fprintf (stderr, "Usage:\n"
+                                "./proj2 A C AGT CGT AWT CWT\n");
+                        exit (type);
+                case 2:
+                        fprintf (stderr, "System call error\n");
+                        exit (type);
+        }
+}
+
+void cacthSignalGenProc (int signal) {
+
+        // Signals
+
+        pid_t ppid = getppid ();
+
+        switch (signal) {
+                case SIGUSR1:   // Synchronizes finish of child/adult processes
+                        if (sharedMemory->adultsRem == 0 && sharedMemory->childrenRem == 0 ) {
+                                sem_t *semE = sem_open (E_SEMAPHORE, O_CREAT, S_IWUSR | S_IRUSR, 0);
+                                for (int i = 0; i < (sharedMemory->a + sharedMemory->c); i++) {
+                                        sem_post (semE);
+                                }
+                                sem_close (semE);
+                        }
+                        break;
+                case SIGUSR2:
+                        kill (ppid, SIGUSR2);
+                        break;
+                case SIGTERM:
+                        kill (0, SIGTERM);
+			while (wait (NULL) != -1);
+                	shmdt (sharedMemory);
+                        exit (2);
+                case SIGINT:
+                        break;
+        }
+}
+
+void cacthSignalMainProc (int signal) {
+	
+	// Signals
+
+	switch (signal) {
+		case SIGUSR2:
+		case SIGTERM:
+		case SIGINT:
+			kill (0, SIGTERM);
+			while (wait (NULL) != -1);
+			sem_unlink (M_SEMAPHORE);       // Cleaning own semaphore
+        		sem_unlink (A_SEMAPHORE);
+        		sem_unlink (C_SEMAPHORE);
+        		sem_unlink (E_SEMAPHORE);
+        		shmdt (sharedMemory);
+        		shmctl (segmentID, IPC_RMID, NULL);
+			printError (2);
+	}
 }
