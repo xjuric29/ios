@@ -1,16 +1,23 @@
 #define FILE_NAME "proj2.out"
+#define PATH "./proj2" 
 #define M_SEMAPHORE "xjuric29_mutex"
 #define A_SEMAPHORE "xjuric29_childs"
 #define C_SEMAPHORE "xjuric29_adults"
-#define COUNT 0
-#define CHILDREN 1
-#define ADULTS 2
-#define WAITING 3
-#define LEAVING 4
-#define ADULTS_REM 5
+#define E_SEMAPHORE "xjuric29_end"
 
 struct processControl {
-	int a, aAct, agt, awt, c, cAct, cgt, cwt;
+	int a, agt, awt, c, cgt, cwt;	// Program params
+	int count, children, adults, waiting, leaving, adultsRem, childrenRem;	// Vars for child and adult processes
+	
+	//count: number of operation
+	//children: number of children in the center
+	//adults: number of adults in the center
+	//waiting: number of children waiting for enter to the center
+	//leaving: number of adults waiting for leave from the center 
+	//adultsRem: number of adults who are still coming to the center
+	//childrenRem: number of children who are still coming to the center
 };
 
-void newProc (const int type, const int order, const int waitTime, int segmentID);
+void cacthSignalGenProc (int signal);
+
+void newProc (const int type, const int order, int segmentID);
