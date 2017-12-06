@@ -1,1 +1,0 @@
-strace -f -o trace -e trace=open,creat ./dirgraph dir <stdin >>stdout 2>>stderr; echo $? >>errcode
