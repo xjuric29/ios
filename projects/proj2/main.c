@@ -125,7 +125,7 @@ int main (int argc, char **argv) {
         // Back in parent
         else if (pidGenerateAdult < 0) cacthSignalMainProc (SIGTERM);
 	
-	printf ("main pid: %d\n", getpid());
+	//printf ("main pid: %d\n", getpid());	// Debug
 
 	while (wait (NULL) != -1);
 

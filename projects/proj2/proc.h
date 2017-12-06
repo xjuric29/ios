@@ -18,6 +18,4 @@ struct processControl {
 	//childrenRem: number of children who are still coming to the center
 };
 
-void cacthSignalGenProc (int signal);
-
 void newProc (const int type, const int order, int segmentID);

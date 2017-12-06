@@ -183,6 +183,7 @@ void newProc (const int type, const int order, int segmentID) {	// Type: 0 - adu
 		file = NULL;
 		sem_post (semM);
 	}
+	usleep(500);
 	kill (ppid, SIGUSR1);
 	sem_wait (semE);	// Waiting while all child/adult process ends
 	sem_wait (semM);        // End
